@@ -3,25 +3,26 @@ title = "Service"
 description = "Professional service, reviewing, and community involvement."
 
 [[items]]
-title = "Reviewer"
-subtitle = "Conference on Neural Information Processing Systems (NeurIPS)"
+title = "Conference on Neural Information Processing Systems (NeurIPS)"
+subtitle = "Reviewer"
 date = "2026"
-content = "Reviewing submissions for NeurIPS 2026."
 
 [[items]]
-title = "Reviewer"
-subtitle = "ACL Rolling Review (ARR)"
+title = "ACL Rolling Review (ARR)"
+subtitle = "Reviewer"
 date = "2026"
-content = "Reviewer for ACL Rolling Review."
 
 [[items]]
-title = "Program Committee"
-subtitle = "AAAI Conference on Artificial Intelligence (AAAI)"
-date = "2025"
-content = "Program Committee member for AAAI 2025."
+title = "ACM AI Summit"
+subtitle = "Reviewer"
+date = "2026"
 
 [[items]]
-title = "Reviewer"
-subtitle = "International Conference on Learning Representations (ICLR)"
+title = "AAAI Conference on Artificial Intelligence (AAAI)"
+subtitle = "Program Committee"
+date = "2025, 2026"
+
+[[items]]
+title = "International Conference on Learning Representations (ICLR)"
+subtitle = "Reviewer"
 date = "2025"
-content = "Reviewed submissions for ICLR 2025."
