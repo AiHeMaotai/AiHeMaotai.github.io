@@ -18,6 +18,11 @@ subtitle = "Reviewer"
 date = "2026"
 
 [[items]]
+title = "PNAS Nexus"
+subtitle = "Reviewer"
+date = "2026"
+
+[[items]]
 title = "AAAI Conference on Artificial Intelligence (AAAI)"
 subtitle = "Program Committee"
 date = "2025, 2026"
