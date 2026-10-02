@@ -1,6 +1,11 @@
 [[news]]
+date = "2026-09-01"
+content = "One paper accepted at NeurIPS 2026! 🎉"
+tag = "Conference"
+
+[[news]]
 date = "2026-07-01"
-content = "Two papers accepted at ACL 2026 (Main + Findings)! 🎉"
+content = "Two papers accepted at ACL 2026 (Main + Findings)! 🎉 🎉"
 tag = "Conference"
 
 [[news]]
