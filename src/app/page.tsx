@@ -1,6 +1,6 @@
 import { getConfig } from '@/lib/config';
 import { getMarkdownContent, getBibtexContent, getTomlContent, getPageConfig } from '@/lib/content';
-import { parseBibTeX } from '@/lib/bibtexParser';
+import { parseBibTeX, applyDisplayOrder } from '@/lib/bibtexParser';
 import Profile from '@/components/home/Profile';
 import About from '@/components/home/About';
 import SelectedPublications from '@/components/home/SelectedPublications';
@@ -52,7 +52,7 @@ export default function Home() {
           const bibtex = getBibtexContent('publications.bib');
           const allPubs = parseBibTeX(bibtex);
           const filteredPubs = section.filter === 'selected'
-            ? allPubs.filter(p => p.selected)
+            ? applyDisplayOrder(allPubs.filter(p => p.selected))
             : allPubs;
           return {
             ...section,

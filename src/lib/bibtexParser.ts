@@ -55,6 +55,10 @@ export function parseBibTeX(bibtexContent: string): Publication[] {
     
     // Parse selected field (convert string to boolean)
     const selected = tags.selected === 'true' || tags.selected === 'yes';
+
+    // Parse optional display position within the selected list (1 = first)
+    const parsedOrder = parseInt(tags.order ?? '', 10);
+    const order = Number.isFinite(parsedOrder) ? parsedOrder : undefined;
     
     // Parse preview field (remove braces if present)
     const preview = tags.preview?.replace(/[{}]/g, '');
@@ -84,10 +88,11 @@ export function parseBibTeX(bibtexContent: string): Publication[] {
       abstract: cleanBibTeXString(tags.abstract),
       description: cleanBibTeXString(tags.description || tags.note),
       selected,
+      order,
       preview,
       
       // Store original BibTeX (excluding custom fields)
-      bibtex: reconstructBibTeX(entry, ['selected', 'preview', 'description', 'keywords', 'code']),
+      bibtex: reconstructBibTeX(entry, ['selected', 'order', 'preview', 'description', 'keywords', 'code']),
     };
     
     // Clean up undefined fields
@@ -113,6 +118,22 @@ export function parseBibTeX(bibtexContent: string): Publication[] {
     // Sort by month descending (December to January)
     return monthB - monthA;
   });
+}
+
+/**
+ * Place publications that carry an explicit `order` field (1 = first) at that
+ * position. Entries without `order` keep their date-sorted relative order.
+ */
+export function applyDisplayOrder(publications: Publication[]): Publication[] {
+  const ordered = publications
+    .filter(p => p.order !== undefined)
+    .sort((a, b) => (a.order as number) - (b.order as number));
+  const result = publications.filter(p => p.order === undefined);
+  for (const pub of ordered) {
+    const index = Math.min(Math.max((pub.order as number) - 1, 0), result.length);
+    result.splice(index, 0, pub);
+  }
+  return result;
 }
 
 function parseAuthors(authorsStr: string): Array<{ name: string; isHighlighted?: boolean; isCorresponding?: boolean; isCoAuthor?: boolean }> {
